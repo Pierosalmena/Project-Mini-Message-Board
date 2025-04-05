@@ -1,37 +1,17 @@
 const { Router } = require("express");
 const indexRouter = Router();
+const {messagesTitle, renderMessages} = require("../controller/indexController")
 
-const messages = [
-    {
-        text: "Hi there!",
-        user: "Amando",
-        added: new Date(),
-        open: "/:messages[]"
-    },
-    {
-        text: "Hello World!",
-        user: "Charles",
-        added: new Date(),
-        open: "test"
-    }
-]
+indexRouter.get("/", messagesTitle);
 
-
-indexRouter.get("/", (req,res) => res.render("index", {title: "Mini Messageboard", messages: messages}));
-
-indexRouter.get("/messages/:id", (req, res) => {
-    const { id } = req.params;
-    const message = messages[id];
-  
-    res.render("messages", { title: "Message Detail", message });
-  });
+indexRouter.get("/messages/:id", renderMessages);
 
 // indexRouter.get("/:indexId", (req, res) => {
 //     const {indexId} = req.params;
 //     res.send(`Index Id: ${indexId}`);
 // });
 
-module.exports = {indexRouter, messages};
+module.exports = {indexRouter};
 
 
 
