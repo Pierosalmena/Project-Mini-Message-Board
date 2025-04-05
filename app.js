@@ -15,7 +15,7 @@ app.use("/", indexRouter);
 app.use("/new", newRouter)
 
 
-const PORT = 3000;
+const PORT = 8080;
 app.listen(PORT, () => {
     console.log(`My first Express app - listening on port ${PORT}`)
 });
